@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katherine T. Ortega | Virtual Assistant, Credit Analyst & Bookkeeper</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316', // Bright Orange
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                            accent: '#FF6B00',
+                        },
+                        dark: {
+                            950: '#0B0F17',
+                            900: '#0F172A',
+                            850: '#151E2E',
+                            800: '#1E293B',
+                            700: '#334155',
+                            600: '#475569',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #F1F5F9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(11, 15, 23, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        /* Dark Card Shadow & Glow */
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px -4px rgba(249, 115, 22, 0.15), 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+            border-color: rgba(249, 115, 22, 0.4);
+        }
+
+        .orange-glow {
+            box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.35);
+        }
+
+        .orange-glow-sm {
+            box-shadow: 0 0 15px -3px rgba(249, 115, 22, 0.25);
+        }
+
+        /* Subtle dark grid background pattern */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(249, 115, 22, 0.12) 0.75px, transparent 0.75px);
+            background-size: 28px 28px;
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            bottom: 0;
+            left: 19px;
+            width: 2px;
+            background-color: #334155;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-cv, #printable-cv * {
+                visibility: visible;
+            }
+            #printable-cv {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                color: #000 !important;
+                background: #fff !important;
+                padding: 20px !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-100 bg-dark-950 selection:bg-brand-500 selection:text-white">
+
+    <!-- Toast Notification for Email Copying -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 ease-out bg-dark-800 text-white px-5 py-3 rounded-xl border border-brand-500/40 shadow-2xl flex items-center space-x-3 pointer-events-none orange-glow-sm">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i>
+        <span id="toast-message" class="text-sm font-medium">Email address copied to clipboard!</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-dark-800 transition-all duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-brand-600 transition-all orange-glow-sm">
+                        KO
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white text-lg tracking-tight group-hover:text-brand-400 transition-colors">Katherine T. Ortega</span>
+                        <span class="text-xs text-brand-400/90 tracking-wider uppercase font-semibold">Virtual Assistant & Analyst</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-semibold text-slate-300 hover:text-brand-400 transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-semibold text-slate-300 hover:text-brand-400 transition-colors">Skills & Tools</a>
+                    <a href="#experience" class="text-sm font-semibold text-slate-300 hover:text-brand-400 transition-colors">Experience</a>
+                    <a href="#education" class="text-sm font-semibold text-slate-300 hover:text-brand-400 transition-colors">Education & Certs</a>
+                    <a href="#contact" class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold text-white bg-brand-500 hover:bg-brand-600 transition-all shadow-sm hover:shadow orange-glow-sm">
+                        Contact Me
+                    </a>
+                </nav>
+
+                <!-- Mobile Navigation Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-dark-800 focus:outline-none" aria-label="Toggle Navigation Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-dark-800 bg-dark-900 px-4 pt-2 pb-6 space-y-3 shadow-2xl">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800 hover:text-brand-400">About</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800 hover:text-brand-400">Skills & Tools</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800 hover:text-brand-400">Experience</a>
+            <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-dark-800 hover:text-brand-400">Education & Certs</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-semibold text-center text-white bg-brand-500">Contact Me</a>
+        </div>
+    </header>
+
+    <main class="pt-24 sm:pt-28">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative py-12 md:py-20 lg:py-24 bg-grid-pattern overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Content -->
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse"></span>
+                            <span>Available for VA, Credit & Bookkeeping Roles</span>
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            Katherine T. Ortega
+                        </h1>
+
+                        <p class="text-xl sm:text-2xl font-semibold text-brand-400 leading-relaxed">
+                            Administrative Assistant <span class="text-dark-600 mx-1">|</span> Financial & Bookkeeping VA <span class="text-dark-600 mx-1">|</span> Credit Analyst
+                        </p>
+
+                        <p class="text-slate-300 max-w-2xl text-base sm:text-lg leading-relaxed">
+                            Bridging meticulous administrative management with structured financial analysis and QuickBooks bookkeeping. Over 5 years of proven excellence supporting executives, teams, and fast-paced businesses.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="mailto:kateortega.va@gmail.com" class="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-base transition-all shadow-md hover:shadow-lg orange-glow transform hover:-translate-y-0.5">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                                <span>Contact Me</span>
+                            </a>
+                            <button onclick="triggerCVDownload()" class="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-200 border border-dark-700 hover:border-brand-500/50 font-semibold text-base transition-all shadow-sm transform hover:-translate-y-0.5">
+                                <i data-lucide="download" class="w-5 h-5 text-brand-400"></i>
+                                <span>Download CV</span>
+                            </button>
+                        </div>
+
+                        <!-- Quick Info Contacts Bar -->
+                        <div class="pt-6 border-t border-dark-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-slate-300">
+                            <button onclick="copyToClipboard('kateortega.va@gmail.com', 'Email address copied!')" class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-dark-800 transition-colors group text-left border border-transparent hover:border-dark-700">
+                                <div class="w-8 h-8 rounded-lg bg-dark-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <span class="font-medium text-slate-200 truncate group-hover:text-brand-400">kateortega.va@gmail.com</span>
+                            </button>
+
+                            <a href="tel:+639327804202" class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-dark-800 transition-colors group border border-transparent hover:border-dark-700">
+                                <div class="w-8 h-8 rounded-lg bg-dark-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                    <i data-lucide="phone" class="w-4 h-4"></i>
+                                </div>
+                                <span class="font-medium text-slate-200 group-hover:text-brand-400">+63 932 780 4202</span>
+                            </a>
+
+                            <div class="flex items-center space-x-2.5 p-2">
+                                <div class="w-8 h-8 rounded-lg bg-dark-800 flex items-center justify-center text-brand-400">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                </div>
+                                <span class="font-medium text-slate-200">Philippines</span>
+                            </div>
+
+                            <a href="https://www.linkedin.com/in/katherine-ortega-3955b2247" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-dark-800 transition-colors group border border-transparent hover:border-dark-700">
+                                <div class="w-8 h-8 rounded-lg bg-dark-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                </div>
+                                <span class="font-medium text-slate-200 group-hover:text-brand-400">LinkedIn Profile</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Visual Card -->
+                    <div class="lg:col-span-4">
+                    <!-- Highlight Visual Card / Portrait -->
+                    <div class="lg:col-span-4 flex justify-center">
+                        <div class="relative group w-full max-w-sm">
+                            <!-- Background orange glow effect -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-brand-600 rounded-3xl blur-lg opacity-60 group-hover:opacity-90 transition duration-300"></div>
+                            
+                            <div class="relative bg-dark-900 rounded-3xl p-3 border border-dark-800 card-shadow overflow-hidden">
+                                <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-dark-800 border border-dark-700/50">
+                                    <img src="hf_20260819_021013_7e071008-20d6-43d2-b3e0-cb7988384e45.jpg" alt="Katherine T. Ortega - Virtual Assistant, Credit Analyst & Bookkeeper" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x500/1E293B/FF6B00?text=Katherine+T.+Ortega';">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-dark-950/20 to-transparent"></div>
+                                    <div class="absolute bottom-3 left-3 right-3 text-white">
+                                        <div class="flex items-center space-x-1.5 text-brand-400 text-xs font-semibold mb-1">
+                                            <i data-lucide="award" class="w-4 h-4"></i>
+                                            <span>Certified QuickBooks ProAdvisor</span>
+                                        </div>
+                                        <p class="text-base font-bold text-white tracking-tight">Katherine T. Ortega</p>
+                                        <p class="text-xs text-slate-300 font-medium">Virtual Assistant & Analyst</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2 pt-3">
+                                    <div class="flex items-center justify-between text-xs py-2 px-3 bg-dark-800 rounded-xl">
+                                        <span class="text-slate-400">Daily Loan Volume</span>
+                                        <span class="font-bold text-brand-400">150+ Applications</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs py-2 px-3 bg-dark-800 rounded-lg">
+                                        <span class="text-slate-400">Bookkeeping Systems</span>
+                                        <span class="font-bold text-slate-200">QuickBooks & AIS Specialist</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs py-2 px-3 bg-dark-800 rounded-lg">
+                                        <span class="text-slate-400">Education</span>
+                                        <span class="font-bold text-slate-200">BS Accounting Info System</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 p-3 bg-brand-500/10 rounded-xl border border-brand-500/30">
+                                    <div class="flex items-start space-x-2.5">
+                                        <i data-lucide="award" class="w-4 h-4 text-brand-400 flex-shrink-0 mt-0.5"></i>
+                                        <div>
+                                            <h3 class="text-[11px] font-bold text-brand-400 uppercase tracking-wide">Key Recognition</h3>
+                                            <p class="text-xs text-slate-300 mt-0.5"><span class="font-semibold text-white">Best Administrative Assistant</span> at Estatoora</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFESSIONAL SUMMARY SECTION -->
+        <section id="about" class="py-16 bg-dark-900 border-y border-dark-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <h2 class="text-xs font-bold text-brand-500 uppercase tracking-widest mb-2">Professional Summary</h2>
+                    <p class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Results-Driven & Confidential VA Professional</p>
+                </div>
+
+                <!-- Blockquote Card -->
+                <div class="relative bg-dark-850 border-l-4 border-brand-500 rounded-r-2xl p-6 sm:p-10 shadow-lg">
+                    <div class="absolute top-4 right-6 text-dark-800 select-none pointer-events-none">
+                        <i data-lucide="quote" class="w-16 h-16 opacity-30"></i>
+                    </div>
+                    <blockquote class="relative z-10 text-slate-200 text-base sm:text-lg leading-relaxed italic">
+                        "Results-driven Administrative Assistant with over 5 years of experience providing administrative, clerical, and operational support in fast-paced environments. Skilled in calendar and email management, document preparation, data entry, record keeping, and coordinating daily office operations. Proficient in Microsoft Office, Google Workspace, and various online systems, with a strong commitment to accuracy, confidentiality, and delivering efficient administrative support."
+                    </blockquote>
+                    <div class="mt-6 flex items-center space-x-3">
+                        <img src="hf_20260819_021013_7e071008-20d6-43d2-b3e0-cb7988384e45.jpg" alt="Katherine T. Ortega" class="w-10 h-10 rounded-full object-cover border-2 border-brand-500 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1E293B/FF6B00?text=KO';">
+                        <div>
+                            <span class="block text-sm font-bold text-white">Katherine T. Ortega</span>
+                            <span class="block text-xs text-brand-400">Virtual Assistant & Financial Operations Professional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS & TOOLS SECTION -->
+        <section id="skills" class="py-16 sm:py-20 bg-dark-950">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <h2 class="text-xs font-bold text-brand-500 uppercase tracking-widest mb-2">Core Competencies</h2>
+                    <p class="text-3xl font-bold text-white tracking-tight">Key Skills & Tools Toolkit</p>
+                    <p class="text-slate-400 text-sm mt-2">Equipped with an end-to-end technical toolkit for executive admin tasks, bookkeeping, CRM, and AI workflows.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Administrative & Operational Support -->
+                    <div class="bg-dark-900 p-6 rounded-2xl border border-dark-800 card-shadow card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-dark-800 flex items-center justify-center text-brand-400 mb-5">
+                                <i data-lucide="folder-check" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Administrative & Executive VA</h3>
+                            <p class="text-xs text-slate-400 mb-4">Core administrative capabilities to keep teams organized and operational.</p>
+                            
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Administrative Support</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Email & Calendar Management</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Data Entry & Document Mgmt</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Travel & Appointment Scheduling</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Online Research</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Time Management & Organization</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Problem-Solving</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial & Bookkeeping Analysis -->
+                    <div class="bg-dark-900 p-6 rounded-2xl border border-dark-800 card-shadow card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-dark-800 flex items-center justify-center text-brand-400 mb-5">
+                                <i data-lucide="calculator" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Financial Analysis & Bookkeeping</h3>
+                            <p class="text-xs text-slate-400 mb-4">Financial oversight, risk evaluation, and meticulous bookkeeping.</p>
+                            
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 rounded-lg bg-brand-500/20 text-brand-300 border border-brand-500/40 text-xs font-semibold">QuickBooks Online</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Financial Analysis</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Credit Evaluation</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Bank & Credit Card Reconciliation</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Accounts Payable & Receivable</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Payment Tracking</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Data Cleanup & Schedules</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack, CRM & AI Platforms -->
+                    <div class="bg-dark-900 p-6 rounded-2xl border border-dark-800 card-shadow card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-dark-800 flex items-center justify-center text-brand-400 mb-5">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Software, CRM & AI Tools</h3>
+                            <p class="text-xs text-slate-400 mb-4">Modern software and AI integration for high efficiency.</p>
+                            
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Google Workspace</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">MS Office Suite</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-brand-500/20 text-brand-300 border border-brand-500/40 text-xs font-semibold">GoHighLevel (CRM)</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">ChatGPT & AI Tools</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">MS Copilot & Gemini</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Trello & Asana</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Slack, Zoom, Teams</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-slate-200 text-xs font-medium border border-dark-700">Canva & CapCut</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFESSIONAL EXPERIENCE SECTION -->
+        <section id="experience" class="py-16 sm:py-20 bg-dark-900 border-t border-dark-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold text-brand-500 uppercase tracking-widest mb-2">Career History</h2>
+                    <p class="text-3xl font-bold text-white tracking-tight">Professional Experience</p>
+                    <p class="text-slate-400 text-sm mt-2">A proven track record in financial institutions, consulting firms, and administrative roles.</p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative timeline-line space-y-12">
+                    
+                    <!-- Experience 1 -->
+                    <div class="relative pl-10 sm:pl-12 group">
+                        <!-- Timeline Node -->
+                        <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-brand-500 border-4 border-dark-900 text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform orange-glow-sm">
+                            <i data-lucide="building-2" class="w-4 h-4"></i>
+                        </div>
+
+                        <div class="bg-dark-950 p-6 sm:p-8 rounded-2xl border border-dark-800 card-shadow card-hover">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Credit Analyst</h3>
+                                    <p class="text-brand-400 font-semibold text-sm">Bank of the Philippine Islands (BPI)</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="inline-block px-3 py-1 rounded-full bg-dark-800 text-slate-300 text-xs font-medium border border-dark-700">Full Time</span>
+                                    <span class="inline-block px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/40 text-xs font-bold">2022 – 2026</span>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Analyzed <strong class="text-white">150+ loan and credit card applications daily</strong>, reviewed financial documents, maintained accurate records, and ensured timely processing while meeting strict deadlines.</span>
+                                </li>
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Managed high-volume administrative tasks, including email correspondence, document verification, report preparation, and coordination with branches, teams, and internal stakeholders using Microsoft Office and collaboration tools such as <strong class="text-slate-100">Microsoft Teams, Zoom, and Google Meet</strong> to streamline workflows.</span>
+                                </li>
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Prepared credit recommendations and management reports, maintained confidential customer information, ensured regulatory compliance, and supported efficient business operations through strong organization and attention to detail.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="relative pl-10 sm:pl-12 group">
+                        <!-- Timeline Node -->
+                        <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-brand-500 border-4 border-dark-900 text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform orange-glow-sm">
+                            <i data-lucide="calculator" class="w-4 h-4"></i>
+                        </div>
+
+                        <div class="bg-dark-950 p-6 sm:p-8 rounded-2xl border border-dark-800 card-shadow card-hover">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Administrative and Bookkeeping Assistant</h3>
+                                    <p class="text-brand-400 font-semibold text-sm">Estatoora Consulting Firm</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="inline-block px-3 py-1 rounded-full bg-dark-800 text-slate-300 text-xs font-medium border border-dark-700">Full Time</span>
+                                    <span class="inline-block px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/40 text-xs font-bold">2019 – 2022</span>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Supported day-to-day accounting operations by categorizing financial transactions, maintaining accounts payable and receivable records, preparing bank and credit card reconciliations, and updating client bookkeeping records in <strong class="text-white">QuickBooks</strong>.</span>
+                                </li>
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Assisted with client onboarding, document collection, organizing financial data, tracking missing information, preparing supporting schedules, and following up with clients to ensure complete and accurate records.</span>
+                                </li>
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Provided remote administrative support through spreadsheet management, data cleanup, payment tracking, recurring task monitoring, and preparation of internal summaries, helping accountants maintain organized records and meet monthly reporting deadlines.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 3 -->
+                    <div class="relative pl-10 sm:pl-12 group">
+                        <!-- Timeline Node -->
+                        <div class="absolute left-0 top-1.5 w-10 h-10 rounded-full bg-dark-700 border-4 border-dark-900 text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                            <i data-lucide="briefcase" class="w-4 h-4"></i>
+                        </div>
+
+                        <div class="bg-dark-950 p-6 sm:p-8 rounded-2xl border border-dark-800 card-shadow card-hover">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Administrative Assistant</h3>
+                                    <p class="text-brand-400 font-semibold text-sm">Soele</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="inline-block px-3 py-1 rounded-full bg-dark-800 text-slate-300 text-xs font-medium border border-dark-700">Part Time</span>
+                                    <span class="inline-block px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/40 text-xs font-bold">2018 – 2019</span>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Provided administrative support by managing emails, scheduling appointments, organizing digital and physical files, conducting online research, and maintaining accurate business records.</span>
+                                </li>
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Prepared invoices, updated spreadsheets, handled data entry, and monitored supplies to ensure smooth day-to-day business operations.</span>
+                                </li>
+                                <li class="flex items-start space-x-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-1"></i>
+                                    <span>Communicated professionally with clients and vendors, coordinated appointments, and assisted with document preparation, contributing to efficient workflow and customer satisfaction.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTIFICATIONS SECTION -->
+        <section id="education" class="py-16 sm:py-20 bg-dark-950">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <h2 class="text-xs font-bold text-brand-500 uppercase tracking-widest mb-2">Qualifications</h2>
+                    <p class="text-3xl font-bold text-white tracking-tight">Education & Certifications</p>
+                    <p class="text-slate-400 text-sm mt-2">Academic degree in Accounting Information System paired with industry awards & certifications.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Education Card -->
+                    <div class="bg-dark-900 p-8 rounded-2xl border border-dark-800 card-shadow space-y-6">
+                        <div class="flex items-center space-x-3 pb-4 border-b border-dark-800">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center">
+                                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Academic Background</h3>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Degree 1 -->
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-white text-base">BS in Accounting Information System</h4>
+                                        <p class="text-brand-400 text-xs font-semibold">Bulacan State University</p>
+                                        <p class="text-slate-400 text-xs mt-0.5">Malolos City, Philippines</p>
+                                    </div>
+                                    <span class="text-xs font-bold px-2.5 py-1 bg-dark-800 rounded-md text-slate-300 border border-dark-700">2022</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-2">Specialized curriculum combining financial accounting, information systems management, internal controls, and business analytics.</p>
+                            </div>
+
+                            <hr class="border-dark-800">
+
+                            <!-- Degree 2 -->
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-white text-base">Accountancy, Business and Management (ABM)</h4>
+                                        <p class="text-brand-400 text-xs font-semibold">ACLC College of Baliuag - Senior High</p>
+                                        <p class="text-slate-400 text-xs mt-0.5">Baliuag City, Philippines</p>
+                                    </div>
+                                    <span class="text-xs font-bold px-2.5 py-1 bg-dark-800 rounded-md text-slate-300 border border-dark-700">2018</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-2">Foundational track in accounting fundamentals, business management, and financial literacy.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications & Awards Card -->
+                    <div class="bg-dark-900 p-8 rounded-2xl border border-dark-800 card-shadow space-y-6">
+                        <div class="flex items-center space-x-3 pb-4 border-b border-dark-800">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center">
+                                <i data-lucide="badge-check" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Certifications & Honors</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Cert 1 -->
+                            <div class="p-4 bg-dark-950 rounded-xl border border-dark-800 flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <h4 class="font-bold text-white text-sm">Certified QuickBooks Online ProAdvisor</h4>
+                                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] font-bold rounded border border-emerald-500/30">Active</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-1">Verified credential in QuickBooks setup, categorizations, bank reconciliation, and business reporting.</p>
+                                </div>
+                            </div>
+
+                            <!-- Award 1 -->
+                            <div class="p-4 bg-dark-950 rounded-xl border border-dark-800 flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="trophy" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Best Administrative Assistant Award</h4>
+                                    <p class="text-xs text-brand-400 font-semibold">Estatoora Consulting Firm</p>
+                                    <p class="text-xs text-slate-400 mt-1">Recognized for outstanding work ethic, attention to detail, and exemplary client support performance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & CTA FOOTER SECTION -->
+        <section id="contact" class="py-16 sm:py-24 bg-dark-950 text-white relative overflow-hidden border-t border-dark-800">
+            <!-- Orange glow background effect -->
+            <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-brand-500/10 blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-brand-500/30">
+                    Get In Touch
+                </span>
+                
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-white">
+                    Ready to Streamline Your Administrative & Financial Workflows?
+                </h2>
+                
+                <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-10">
+                    Whether you need a full-time Virtual Assistant, an experienced QuickBooks Bookkeeper, or a diligent Credit Analyst, I am ready to add immediate value to your business.
+                </p>
+
+                <!-- Action Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-12">
+                    
+                    <!-- Direct Email Button -->
+                    <button onclick="copyToClipboard('kateortega.va@gmail.com', 'Email copied!')" class="p-6 rounded-2xl bg-dark-900 border border-dark-800 hover:border-brand-500/50 hover:bg-dark-850 transition-all text-left group flex items-center justify-between card-shadow">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-dark-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <span class="block text-xs text-slate-400 uppercase tracking-wider font-semibold">Direct Email</span>
+                                <span class="block text-sm font-bold text-white group-hover:text-brand-400 transition-colors truncate">kateortega.va@gmail.com</span>
+                            </div>
+                        </div>
+                        <i data-lucide="copy" class="w-4 h-4 text-slate-500 group-hover:text-brand-400 transition-colors flex-shrink-0"></i>
+                    </button>
+
+                    <!-- LinkedIn Link -->
+                    <a href="https://www.linkedin.com/in/katherine-ortega-3955b2247" target="_blank" rel="noopener noreferrer" class="p-6 rounded-2xl bg-dark-900 border border-dark-800 hover:border-brand-500/50 hover:bg-dark-850 transition-all text-left group flex items-center justify-between card-shadow">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-dark-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <span class="block text-xs text-slate-400 uppercase tracking-wider font-semibold">Connect on LinkedIn</span>
+                                <span class="block text-sm font-bold text-white group-hover:text-brand-400 transition-colors truncate">katherine-ortega</span>
+                            </div>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-brand-400 transition-colors flex-shrink-0"></i>
+                    </a>
+
+                </div>
+
+                <!-- Footer Navigation and Copyright -->
+        <div class="pt-10 border-t border-dark-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <p>© <span id="year">2026</span> Katherine T. Ortega. All rights reserved.</p>
+            <div class="flex items-center space-x-6">
+                <a href="#hero" class="hover:text-brand-400 transition-colors">Back to top ↑</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+    <div id="cv-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden overflow-y-auto">
+        <div class="bg-dark-900 border border-dark-700 rounded-2xl max-w-3xl w-full my-8 max-h-[90vh] flex flex-col shadow-2xl orange-glow-sm overflow-hidden">
+            <!-- Modal Header -->
+            <div class="p-5 bg-dark-850 border-b border-dark-700 flex items-center justify-between flex-shrink-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Katherine T. Ortega &mdash; Official Resume</h3>
+                        <p class="text-xs text-brand-400">Ready to save as PDF or download</p>
+                    </div>
+                </div>
+                <button onclick="closeCVModal()" class="p-2 text-slate-400 hover:text-white hover:bg-dark-700 rounded-lg transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body / Printable Area -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-slate-900 bg-white rounded-b-xl" id="printable-cv">
+                <!-- Header -->
+                <div class="border-b pb-4 border-slate-300">
+                    <h1 class="text-2xl font-bold tracking-tight text-slate-900">KATHERINE T. ORTEGA</h1>
+                    <p class="text-xs font-medium text-slate-700 mt-1">
+                        kateortega.va@gmail.com &nbsp;|&nbsp; +63 932 780 4202 &nbsp;|&nbsp; Philippines &nbsp;|&nbsp; linkedin.com/in/katherine-ortega-3955b2247
+                    </p>
+                </div>
+
+                <!-- Professional Summary -->
+                <div>
+                    <h2 class="text-xs font-bold text-slate-900 tracking-wider uppercase border-b border-slate-300 pb-1 mb-2">Professional Summary</h2>
+                    <p class="text-xs text-slate-800 leading-relaxed">
+                        Results-driven Administrative Assistant with over 5 years of experience providing administrative, clerical, and operational support in fast-paced environments. Skilled in calendar and email management, document preparation, data entry, record keeping, and coordinating daily office operations. Proficient in Microsoft Office, Google Workspace, and various online systems, with a strong commitment to accuracy, confidentiality, and delivering efficient administrative support.
+                    </p>
+                </div>
+
+                <!-- Key Skills -->
+                <div>
+                    <h2 class="text-xs font-bold text-slate-900 tracking-wider uppercase border-b border-slate-300 pb-1 mb-2">Key Skills</h2>
+                    <p class="text-xs text-slate-800 leading-relaxed">
+                        Administrative Support | Email & Calendar Management | Google Workspace | Microsoft Office Suite | ChatGPT & AI Tools | Data Entry & Document Management | Financial Analysis & Credit Evaluation | Time Management | Canva | CRM & Online Systems | Travel & Appointment Scheduling | Online Research | Problem-Solving & Organization
+                    </p>
+                </div>
+
+                <!-- Tools -->
+                <div>
+                    <h2 class="text-xs font-bold text-slate-900 tracking-wider uppercase border-b border-slate-300 pb-1 mb-2">Tools</h2>
+                    <p class="text-xs text-slate-800 leading-relaxed">
+                        Google Workspace | Microsoft Office Suite | CRM platforms (GoHighLevel) | QuickBooks | Zoom | Google Meet | Microsoft Teams | Email platforms | Slack | Dropbox | Microsoft Copilot | Canva | CapCut | Gemini | Trello | Asana
+                    </p>
+                </div>
+
+                <!-- Professional Experience -->
+                <div>
+                    <h2 class="text-xs font-bold text-slate-900 tracking-wider uppercase border-b border-slate-300 pb-1 mb-3">Professional Experience</h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-slate-900">
+                                <span>Credit Analyst &mdash; Bank of the Philippine Islands</span>
+                                <span>2022 &ndash; 2026</span>
+                            </div>
+                            <p class="text-[11px] italic text-slate-600 mb-1.5">Full Time</p>
+                            <ul class="list-disc list-inside text-xs text-slate-800 space-y-1">
+                                <li>Analyzed 150+ loan and credit card applications daily, reviewed financial documents, maintained accurate records, and ensured timely processing while meeting strict deadlines.</li>
+                                <li>Managed high-volume administrative tasks, including email correspondence, document verification, report preparation, and coordination with branches, teams, and internal stakeholders using Microsoft Office and collaboration tools such as Microsoft Teams, Zoom, and Google Meet to streamline workflows.</li>
+                                <li>Prepared credit recommendations and management reports, maintained confidential customer information, ensured regulatory compliance, and supported efficient business operations through strong organization and attention to detail.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-slate-900">
+                                <span>Administrative and Bookkeeping Assistant &mdash; Estatoora Consulting Firm</span>
+                                <span>2019 &ndash; 2022</span>
+                            </div>
+                            <p class="text-[11px] italic text-slate-600 mb-1.5">Full Time</p>
+                            <ul class="list-disc list-inside text-xs text-slate-800 space-y-1">
+                                <li>Supported day-to-day accounting operations by categorizing financial transactions, maintaining accounts payable and receivable records, preparing bank and credit card reconciliations, and updating client bookkeeping records in QuickBooks.</li>
+                                <li>Assisted with client onboarding, document collection, organizing financial data, tracking missing information, preparing supporting schedules, and following up with clients to ensure complete and accurate records.</li>
+                                <li>Provided remote administrative support through spreadsheet management, data cleanup, payment tracking, recurring task monitoring, and preparation of internal summaries, helping accountants maintain organized records and meet monthly reporting deadlines.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-slate-900">
+                                <span>Administrative Assistant &mdash; Soele</span>
+                                <span>2018 &ndash; 2019</span>
+                            </div>
+                            <p class="text-[11px] italic text-slate-600 mb-1.5">Part Time</p>
+                            <ul class="list-disc list-inside text-xs text-slate-800 space-y-1">
+                                <li>Provided administrative support by managing emails, scheduling appointments, organizing digital and physical files, conducting online research, and maintaining accurate business records.</li>
+                                <li>Prepared invoices, updated spreadsheets, handled data entry, and monitored supplies to ensure smooth day-to-day business operations.</li>
+                                <li>Communicated professionally with clients and vendors, coordinated appointments, and assisted with document preparation, contributing to efficient workflow and customer satisfaction.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div>
+                    <h2 class="text-xs font-bold text-slate-900 tracking-wider uppercase border-b border-slate-300 pb-1 mb-2">Education</h2>
+                    <div class="space-y-2 text-xs text-slate-800">
+                        <div class="flex justify-between">
+                            <span><strong class="text-slate-900">Bachelor of Science in Accounting Information System</strong> &mdash; Bulacan State University | Malolos City, Philippines</span>
+                            <span class="font-bold text-slate-900">2022</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span><strong class="text-slate-900">Accountancy, Business and Management (ABM)</strong> &mdash; ACLC College of Baliuag - Senior High | Baliuag City, Philippines</span>
+                            <span class="font-bold text-slate-900">2018</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications & Honors -->
+                <div>
+                    <h2 class="text-xs font-bold text-slate-900 tracking-wider uppercase border-b border-slate-300 pb-1 mb-2">Certifications & Honors</h2>
+                    <ul class="list-disc list-inside text-xs text-slate-800 space-y-1">
+                        <li>Certified QuickBooks Online ProAdvisor</li>
+                        <li>Awarded as Best Administrative Assistant (Estatoora Consulting Firm)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Modal Footer Controls -->
+            <div class="p-4 bg-dark-850 border-t border-dark-700 flex flex-wrap items-center justify-between gap-3 flex-shrink-0 no-print">
+                <button onclick="closeCVModal()" class="px-4 py-2 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-300 text-sm font-semibold transition-colors">
+                    Close
+                </button>
+                <div class="flex items-center space-x-3">
+                    <button onclick="downloadTextResume()" class="px-4 py-2 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-200 border border-dark-700 hover:border-brand-500/50 text-sm font-semibold transition-all flex items-center space-x-2">
+                        <i data-lucide="file-text" class="w-4 h-4 text-brand-400"></i>
+                        <span>Download TXT</span>
+                    </button>
+                    <button onclick="printCV()" class="px-5 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold transition-all orange-glow-sm flex items-center space-x-2">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Save as PDF / Print</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Update copyright year automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Clipboard copy function with toast notification
+        function copyToClipboard(text, successMessage) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(successMessage || 'Copied to clipboard!');
+            }).catch(err => {
+                showToast('Failed to copy text.');
+            });
+        }
+
+        function triggerCVDownload() {
+            document.getElementById('cv-modal').classList.remove('hidden');
+            showToast('Resume ready for PDF download or print!');
+        }
+
+        function closeCVModal() {
+            document.getElementById('cv-modal').classList.add('hidden');
+        }
+
+        function printCV() {
+            window.print();
+        }
+
+        function downloadTextResume() {
+            const resumeContent = `KATHERINE T. ORTEGA
+kateortega.va@gmail.com | +63 932 780 4202 | Philippines | www.linkedin.com/in/katherine-ortega-3955b2247
+
+PROFESSIONAL SUMMARY
+Results-driven Administrative Assistant with over 5 years of experience providing administrative, clerical, and operational support in fast-paced environments. Skilled in calendar and email management, document preparation, data entry, record keeping, and coordinating daily office operations. Proficient in Microsoft Office, Google Workspace, and various online systems, with a strong commitment to accuracy, confidentiality, and delivering efficient administrative support.
+
+KEY SKILLS
+Administrative Support | Email & Calendar Management | Google Workspace | Microsoft Office Suite | ChatGPT & AI Tools | Data Entry & Document Management | Financial Analysis & Credit Evaluation | Time Management | Canva | CRM & Online Systems | Travel & Appointment Scheduling | Online Research | Problem-Solving & Organization
+
+TOOLS
+Google Workspace | Microsoft Office Suite | CRM platforms (GoHighLevel) | Quickbooks | Zoom | Google Meet | Microsoft Teams | Email platforms | Slack | Dropbox | Microsoft Copilot | Canva | CapCut | Gemini | Trello | Asana
+
+PROFESSIONAL EXPERIENCE
+
+Credit Analyst
+Bank of the Philippine Islands (Full Time) | 2022-2026
+- Analyzed 150+ loan and credit card applications daily, reviewed financial documents, maintained accurate records, and ensured timely processing while meeting strict deadlines.
+- Managed high-volume administrative tasks, including email correspondence, document verification, report preparation, and coordination with branches, teams, and internal stakeholders using Microsoft Office and collaboration tools such as Microsoft Teams, Zoom, and Google Meet to streamline workflows.
+- Prepared credit recommendations and management reports, maintained confidential customer information, ensured regulatory compliance, and supported efficient business operations through strong organization and attention to detail.
+
+Administrative and Bookkeeping Assistant
+Estatoora Consulting Firm (Full Time) | 2019-2022
+- Supported day-to-day accounting operations by categorizing financial transactions, maintaining accounts payable and receivable records, preparing bank and credit card reconciliations, and updating client bookkeeping records in QuickBooks.
+- Assisted with client onboarding, document collection, organizing financial data, tracking missing information, preparing supporting schedules, and following up with clients to ensure complete and accurate records.
+- Provided remote administrative support through spreadsheet management, data cleanup, payment tracking, recurring task monitoring, and preparation of internal summaries, helping accountants maintain organized records and meet monthly reporting deadlines.
+
+Administrative Assistant
+Soele (Part Time) | 2018-2019
+- Provided administrative support by managing emails, scheduling appointments, organizing digital and physical files, conducting online research, and maintaining accurate business records.
+- Prepared invoices, updated spreadsheets, handled data entry, and monitored supplies to ensure smooth day-to-day business operations.
+- Communicated professionally with clients and vendors, coordinated appointments, and assisted with document preparation, contributing to efficient workflow and customer satisfaction.
+
+EDUCATION
+Bachelor of Science in Accounting Information System
+Bulacan State University | Malolos City, Philippines | 2022
+
+Accountancy, Business and Management (ABM)
+ACLC College of Baliuag - Senior High | Baliuag City, Philippines | 2018
+
+CERTIFICATIONS & HONORS
+- Certified Quickbooks Online ProAdvisor
+- Estatoora: Awarded as Best Administrative Assistant
+`;
+
+            const blob = new Blob([resumeContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Katherine_T_Ortega_Resume.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            showToast('Text version downloaded!');
+        }
+
+        // Show toast function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
